@@ -17,15 +17,18 @@ export default function Settings() {
     const styles = StyleSheet.create({
         container: {
             flex: 1,
-            backgroundColor: '#fff',
+            backgroundColor: darkMode ? 'black' : 'white',
             alignItems: 'center',
             justifyContent: 'center',
         },
+        mainText: {
+            color: darkMode ? 'white' : 'black'
+        }
     });
 
     return (
         <View style={styles.container}>
-            <Text>Settings! {darkMode ? 'Darkmode!' : 'Darkmode?'}</Text>
+            <Text className="text-xl font-semibold" style={styles.mainText}>Settings! {darkMode ? 'Darkmode!' : 'Darkmode?'}</Text>
             <Switch
                 trackColor={{false: '#767577', true: '#81b0ff'}}
                 thumbColor={darkMode ? '#f5dd4b' : '#f4f3f4'}

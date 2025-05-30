@@ -16,11 +16,14 @@ export default function Homepage() {
             alignItems: 'center',
             justifyContent: 'center',
         },
+        mainText: {
+            color: darkMode ? 'white' : 'black'
+        }
     });
 
     return (
         <View style={styles.container}>
-            <Text>Homepage!</Text>
+            <Text className="text-xl font-semibold" style={styles.mainText}>Homepage!</Text>
             <StatusBar style="auto" />
         </View>
     );
