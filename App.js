@@ -8,6 +8,7 @@ import React, {useState} from "react";
 import Feather from '@expo/vector-icons/Feather';
 import Homepage from "./Homepage";
 import {AppProvider, Theme} from "./components/Theme";
+import './global.css';
 
 
 
