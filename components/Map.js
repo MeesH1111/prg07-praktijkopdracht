@@ -15,6 +15,7 @@ export default function Map() {
         latitudeDelta: 0.01,
         longitudeDelta: 0.01,
     })
+    const [hotspots, setHotspots] = useState([])
     const { darkMode } = useContext(Theme)
 
     const darkModeMapStyle = [
@@ -185,6 +186,19 @@ export default function Map() {
         }
 
         getLocationPermission()
+
+        const fetchHotspots = async () => {
+            try {
+                const response = await fetch('https://api.jsonsilo.com/public/682f224f-4d79-4081-8d8c-eb1434b39b87');
+                const data = await response.json();
+                setHotspots(data.hotspots);
+            } catch (error) {
+                console.error('Fout bij het ophalen van hotspots:', error);
+                Alert.alert('Error', 'Kon hotspots niet laden');
+            }
+        };
+
+        fetchHotspots();
     }, []);
 
     return (
@@ -196,7 +210,22 @@ export default function Map() {
                 showsMyLocationButton={true}
                 mapType={darkMode ? 'standard' : 'hybrid'}
                 customMapStyle={darkMode ? darkModeMapStyle : []}
-            />
+            >
+                {hotspots.map(hotspot => (
+                    <Marker
+                        onPress={() => Alert.alert(hotspot.name, hotspot.description)}
+                        key={hotspot.id}
+                        coordinate={{
+                            latitude: hotspot.latitude,
+                            longitude: hotspot.longitude
+                        }}
+                        title={hotspot.name}
+                        description={hotspot.description}
+                    />
+                ))}
+
+            </MapView>
+
 
     )
 }
