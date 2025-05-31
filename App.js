@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import HotspotsList from "./HotspotsList";
+import HotspotsMap from "./HotspotsMap";
 import Settings from "./Settings";
 import React, {useState} from "react";
 import Feather from '@expo/vector-icons/Feather';
@@ -23,6 +24,12 @@ export default function App() {
           name={'Home'}
           component={Homepage}
           options={{tabBarIcon: () => <Feather name="home" size={23} />}}
+      />
+
+      <Tab.Screen
+          name={'HotspotsMap'}
+          component={HotspotsMap}
+          options={{tabBarIcon: () => <Feather name="map-pin" size={24} color="black" />}}
       />
 
       <Tab.Screen
