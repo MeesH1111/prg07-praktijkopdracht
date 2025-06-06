@@ -3,6 +3,7 @@ import {FlatList, StyleSheet, Text, View} from 'react-native';
 import React, {useContext} from "react";
 import Feather from '@expo/vector-icons/Feather';
 import {Theme} from "./components/Theme";
+import HotspotList from "./components/HotspotList";
 
 export default function HotspotsList() {
     const { darkMode } = useContext(Theme);
@@ -22,7 +23,8 @@ export default function HotspotsList() {
 
     return (
         <View style={styles.container}>
-            <Text className="text-xl font-semibold" style={styles.mainText}>Hotspots List!</Text>
+            <Text className="text-3xl font-semibold p-6 m-6" style={styles.mainText}>Skatespots lijst!</Text>
+            <HotspotList />
             <StatusBar style="auto" />
         </View>
     );
