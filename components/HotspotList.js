@@ -1,10 +1,12 @@
 import {useContext, useEffect, useState} from "react";
-import {ActivityIndicator, FlatList, SafeAreaView, StyleSheet, Text, View} from "react-native";
+import {ActivityIndicator, FlatList, Pressable, SafeAreaView, StyleSheet, Text, View} from "react-native";
 import {SafeAreaProvider} from "react-native-safe-area-context";
 import {Theme} from "./Theme";
+import {useNavigation} from "@react-navigation/native";
 
 
 export default function HotspotList() {
+    const navigation = useNavigation();
     const [hotspot, setHotspot] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
@@ -37,6 +39,14 @@ export default function HotspotList() {
         );
     }
 
+    const handlePress = (hotspot) => {
+        console.log('Navigating to Map with:', hotspot.latitude, hotspot.longitude);
+        navigation.navigate('HotspotsMap', {
+            latitude: hotspot.latitude,
+            longitude: hotspot.longitude,
+        })
+    }
+
     const styles = StyleSheet.create({
         listItemView: {
             backgroundColor: darkMode ? 'black' : 'white',
@@ -63,12 +73,16 @@ export default function HotspotList() {
                     data={hotspot}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({item}) => (
-                        <View style={styles.listItemView}
-                              className="p-6 m-6 border-2 border-gray-300 rounded-lg shadow-xl">
-                            <Text style={styles.listTextTitle} className="font-bold text-lg">{item.name}</Text>
-                            <Text style={styles.listTextType}>{item.type}</Text>
-                            <Text style={styles.listTextDescription}>{item.description}</Text>
-                        </View>
+                        <Pressable onPress={() => handlePress(item)}>
+                            <View style={styles.listItemView}
+                                  className="p-6 m-6 border-2 border-gray-300 rounded-lg shadow-xl"
+
+                            >
+                                <Text style={styles.listTextTitle} className="font-bold text-lg">{item.name}</Text>
+                                <Text style={styles.listTextType}>{item.type}</Text>
+                                <Text style={styles.listTextDescription}>{item.description}</Text>
+                            </View>
+                        </Pressable>
                     )}
 
                 />

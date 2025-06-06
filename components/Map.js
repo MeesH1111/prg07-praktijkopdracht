@@ -1,13 +1,14 @@
-import MapView, {Callout, Circle, Marker, PROVIDER_GOOGLE} from "react-native-maps";
-import {View, StyleSheet, Alert} from "react-native";
-import {useContext, useEffect, useState} from "react";
+import MapView, {Marker, PROVIDER_GOOGLE} from "react-native-maps";
+import {Alert, StyleSheet} from "react-native";
+import {useContext, useEffect, useRef, useState} from "react";
 import * as Location from 'expo-location';
-import { Theme } from "./Theme";
-
-
+import {Theme} from "./Theme";
+import {useRoute} from "@react-navigation/native";
 
 
 export default function Map() {
+    const route = useRoute();
+    const mapRef = useRef(null)
     const [location, setLocation] = useState(null)
     const [initialRegion] = useState({
         latitude: 51.92003432310167,
@@ -16,7 +17,8 @@ export default function Map() {
         longitudeDelta: 0.01,
     })
     const [hotspots, setHotspots] = useState([])
-    const { darkMode } = useContext(Theme)
+    const {darkMode} = useContext(Theme)
+    const {latitude, longitude} = route.params || {}
 
     const darkModeMapStyle = [
         {
@@ -182,7 +184,7 @@ export default function Map() {
 
     useEffect(() => {
         const getLocationPermission = async () => {
-            const { status } = await Location.requestForegroundPermissionsAsync();
+            const {status} = await Location.requestForegroundPermissionsAsync();
         }
 
         getLocationPermission()
@@ -201,30 +203,51 @@ export default function Map() {
         fetchHotspots();
     }, []);
 
-    return (
-            <MapView
-                style={styles.map}
-                provider={PROVIDER_GOOGLE}
-                initialRegion={initialRegion}
-                showsUserLocation={true}
-                showsMyLocationButton={true}
-                mapType={darkMode ? 'standard' : 'hybrid'}
-                customMapStyle={darkMode ? darkModeMapStyle : []}
-            >
-                {hotspots.map(hotspot => (
-                    <Marker
-                        onPress={() => Alert.alert(hotspot.name, hotspot.description)}
-                        key={hotspot.id}
-                        coordinate={{
-                            latitude: hotspot.latitude,
-                            longitude: hotspot.longitude
-                        }}
-                        title={hotspot.name}
-                        description={hotspot.description}
-                    />
-                ))}
+    useEffect(() => {
+        console.log('Navigated to Map with:', latitude, longitude);
+        if (mapRef.current) {
+            console.log("MapRef is correctly initialized:", mapRef.current);
+        } else {
+            console.log("MapRef is not initialized");
+        }
 
-            </MapView>
+
+        if (latitude && longitude && mapRef.current) {
+            console.log("Animating to region:", {latitude, longitude});
+            mapRef.current.animateToRegion({
+                latitude,
+                longitude,
+                latitudeDelta: 0.005,
+                longitudeDelta: 0.005,
+            })
+        }
+    }, [latitude, longitude])
+
+    return (
+        <MapView
+            ref={mapRef}
+            style={styles.map}
+            provider={PROVIDER_GOOGLE}
+            initialRegion={initialRegion}
+            showsUserLocation={true}
+            showsMyLocationButton={true}
+            mapType={darkMode ? 'standard' : 'hybrid'}
+            customMapStyle={darkMode ? darkModeMapStyle : []}
+        >
+            {hotspots.map(hotspot => (
+                <Marker
+                    onPress={() => Alert.alert(hotspot.name, hotspot.description)}
+                    key={hotspot.id}
+                    coordinate={{
+                        latitude: hotspot.latitude,
+                        longitude: hotspot.longitude
+                    }}
+                    title={hotspot.name}
+                    description={hotspot.description}
+                />
+            ))}
+
+        </MapView>
 
 
     )
