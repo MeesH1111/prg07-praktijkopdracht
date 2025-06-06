@@ -11,7 +11,6 @@ export default function Settings() {
 
     function switchMode() {
         setDarkMode(previousState => !previousState)
-        console.log('Darkmode:', darkMode)
     }
 
     const styles = StyleSheet.create({
