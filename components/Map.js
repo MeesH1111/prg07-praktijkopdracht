@@ -204,16 +204,8 @@ export default function Map() {
     }, []);
 
     useEffect(() => {
-        console.log('Navigated to Map with:', latitude, longitude);
-        if (mapRef.current) {
-            console.log("MapRef is correctly initialized:", mapRef.current);
-        } else {
-            console.log("MapRef is not initialized");
-        }
-
 
         if (latitude && longitude && mapRef.current) {
-            console.log("Animating to region:", {latitude, longitude});
             mapRef.current.animateToRegion({
                 latitude,
                 longitude,
