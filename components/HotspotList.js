@@ -163,7 +163,7 @@ export default function HotspotList() {
                                   className="p-6 m-6 border-2 border-gray-300 rounded-lg shadow-xl"
 
                             >
-                                <View className="flex bg-gray-100 rounded-lg p-4">
+                                <View className={`flex  ${darkMode ? 'bg-gray-800' : 'bg-gray-100'} rounded-lg p-4`}>
                                     <Text style={styles.listTextTitle} className="font-bold text-lg">{item.name}</Text>
                                     <Text style={styles.listTextDescription} className="">{item.description}</Text>
                                     <View
@@ -182,7 +182,7 @@ export default function HotspotList() {
 
                                     {/*NOTITIE*/}
                                     <Pressable onPress={() => openNoteModal(item.id)}
-                                               className="p-6 mt-4 w-72 max-w-72 border-2 border-gray-500 rounded-lg bg-white">
+                                               className={`p-6 mt-4 w-72 max-w-72 border-2 border-gray-500 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
                                         <View>
                                             <Text
                                                 className={`${darkMode ? 'text-white' : 'text-black'} font-bold`}>
