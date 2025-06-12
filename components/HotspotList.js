@@ -1,8 +1,9 @@
-import {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {
     ActivityIndicator,
     Button,
     FlatList,
+    ImageBackground,
     Modal,
     Pressable,
     SafeAreaView,
@@ -16,6 +17,7 @@ import {SafeAreaProvider} from "react-native-safe-area-context";
 import {Theme} from "./Theme";
 import {useNavigation} from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import {Entypo} from "@expo/vector-icons";
 
 
 export default function HotspotList() {
@@ -141,7 +143,7 @@ export default function HotspotList() {
         },
 
         listTextDescription: {
-            color: darkMode ? 'white' : 'black'
+            color: darkMode ? 'white' : 'black',
         },
 
         favorite: {
@@ -155,16 +157,32 @@ export default function HotspotList() {
         <SafeAreaProvider>
             <SafeAreaView>
                 <FlatList
+                    ListHeaderComponent={
+                        <View className="flex flex-row justify-center items-center">
+                            <Entypo name="list" size={24} color="black"/>
+                            <Text
+                                className="text-3xl font-semibold p-6"
+                                style={styles.listTextTitle}
+                            >
+                                Skatespots lijst!
+                            </Text>
+                        </View>
+
+                    }
                     data={hotspot}
                     keyExtractor={(item, index) => index.toString()}
                     renderItem={({item}) => (
                         <Pressable onPress={() => handlePress(item)}>
-                            <View style={styles.listItemView}
-                                  className="p-6 m-6 border-2 border-gray-300 rounded-lg shadow-xl"
+                            <ImageBackground
+                                source={{uri: "https://rotterdammakeithappen.nl/app/uploads/2019/09/201908_VerwoesteStad_558A3033_IrisvandenBroek-855x570.jpg"}}
+                                style={styles.listItemView}
+                                className="p-6 m-6 border-2 border-gray-300 rounded-lg shadow-xl"
 
                             >
-                                <View className={`flex  ${darkMode ? 'bg-gray-800' : 'bg-gray-100'} rounded-lg p-4`}>
-                                    <Text style={styles.listTextTitle} className="font-bold text-lg">{item.name}</Text>
+                                <View
+                                    className={`flex  ${darkMode ? 'bg-gray-800' : 'bg-gray-100'} rounded-lg p-4`}>
+                                    <Text style={styles.listTextTitle}
+                                          className="font-bold text-lg">{item.name}</Text>
                                     <Text style={styles.listTextDescription} className="">{item.description}</Text>
                                     <View
                                         className="flex flex-row justify-center items-center rounded-full max-w-28 bg-sky-100 mt-4">
@@ -196,11 +214,11 @@ export default function HotspotList() {
                                                 </Text>
                                             </ScrollView>
                                         </View>
+
                                     </Pressable>
                                 </View>
 
-
-                            </View>
+                            </ImageBackground>
                             <Modal
                                 animationType="slide"
                                 transparent={true}
