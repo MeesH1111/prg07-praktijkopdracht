@@ -160,7 +160,7 @@ export default function HotspotList() {
             <SafeAreaView>
                 <FlatList
                     ListHeaderComponent={
-                        <View className="flex flex-row justify-center items-center">
+                        <View className="flex flex-row justify-center items-center mt-10">
                             <Entypo name="list" size={24} color="black"/>
                             <Text
                                 className="text-3xl font-semibold p-6"

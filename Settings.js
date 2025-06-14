@@ -27,7 +27,9 @@ export default function Settings() {
     });
 
     return (
-        <View style={styles.container}>
+        <View style={styles.container}
+              className="mt-10"
+        >
             <Text style={styles.mainText}
                   className="pl-4 ml-4 pt-4 font-medium text-lg"
             >
