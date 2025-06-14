@@ -69,6 +69,8 @@ export default function HotspotList() {
             }
 
             setfavorites(updatedfavorites)
+
+            await AsyncStorage.setItem('favorites', JSON.stringify(updatedfavorites))
         } catch (error) {
             console.error('Fout bij het opslaan van favorites:', error)
         }

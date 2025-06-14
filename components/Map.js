@@ -256,10 +256,12 @@ export default function Map() {
                     }}
                 >
                     <View className="flex-1 justify-center items-center">
-                        <View className="flex bg-white border-2 rounded-xl w-96 h-96">
+                        <View
+                            className={`flex ${darkMode ? 'bg-gray-800 border-white' : 'bg-white border-gray-700'} border-2 rounded-xl w-96 h-96`}>
                             <View className="flex justify-start items-start">
                                 <View className="flex flex-row justify-between items-center w-full">
-                                    <Text className="p-2 font-bold text-lg">{selectedHotspot.name}</Text>
+                                    <Text
+                                        className={`p-2 font-bold text-lg ${darkMode ? 'text-white' : 'text-black'}`}>{selectedHotspot.name}</Text>
                                     <Pressable
                                         className="p-2 rounded-full text-white"
                                         onPress={() => {
@@ -269,7 +271,8 @@ export default function Map() {
                                         <AntDesign name="closecircleo" size={24} color="#3b82f6"/>
                                     </Pressable>
                                 </View>
-                                <Text className="pl-2">{`${selectedHotspot.description}`}</Text>
+                                <Text
+                                    className={`pl-2 pb-2 ${darkMode ? 'text-white' : 'text-black'}`}>{`${selectedHotspot.description}`}</Text>
                             </View>
                             <WebView
                                 source={{html: `<iframe width="100%" height="100%" src=${selectedHotspot.iframeSrc} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`}}
