@@ -2,6 +2,7 @@ import {StatusBar} from 'expo-status-bar';
 import {StyleSheet, Switch, Text, View} from 'react-native';
 import React, {useContext} from "react";
 import {Theme} from "./components/Theme";
+import Feather from "@expo/vector-icons/Feather";
 
 
 export default function Settings() {
@@ -28,18 +29,21 @@ export default function Settings() {
     return (
         <View style={styles.container}>
             <Text style={styles.mainText}
-                  className="pl-4 pt-4"
+                  className="pl-4 ml-4 pt-4 font-medium text-lg"
             >
                 Layout
             </Text>
             <View style={styles.block}
-                  className="flex flex-row justify-around p-4 m-4 border-2 border-gray-200 rounded-2xl bg-white shadow">
-                <Text style={styles.mainText}
-                      className="text-lg font-semibold"
+                  className="flex flex-row justify-between items-center p-4 m-4 border-2 border-gray-200 rounded-2xl bg-white shadow">
+                <View className="flex flex-row items-center justify-between w-40">
+                    <Feather name={`${darkMode ? 'sun' : 'moon'}`} size={24} color={`${darkMode ? 'white' : 'black'}`}/>
+                    <Text style={styles.mainText}
+                          className="flex text-lg font-semibold"
 
-                >
-                    {darkMode ? 'Darkmode!' : 'Darkmode?'}
-                </Text>
+                    >
+                        {darkMode ? 'Dark Mode!' : 'Dark Mode?'}
+                    </Text>
+                </View>
                 <Switch
                     trackColor={{false: '#767577', true: '#81b0ff'}}
                     thumbColor={darkMode ? '#f5dd4b' : '#f4f3f4'}
