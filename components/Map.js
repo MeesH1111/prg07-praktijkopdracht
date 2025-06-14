@@ -1,9 +1,11 @@
 import MapView, {Marker, PROVIDER_GOOGLE} from "react-native-maps";
-import {Alert, StyleSheet} from "react-native";
+import {Alert, Modal, Pressable, StyleSheet, Text, View} from "react-native";
 import {useContext, useEffect, useRef, useState} from "react";
 import * as Location from 'expo-location';
 import {Theme} from "./Theme";
 import {useRoute} from "@react-navigation/native";
+import WebView from "react-native-webview";
+import {AntDesign} from "@expo/vector-icons";
 
 
 export default function Map() {
@@ -16,6 +18,8 @@ export default function Map() {
         latitudeDelta: 0.01,
         longitudeDelta: 0.01,
     })
+    const [modalVisible, setModalVisible] = useState(false)
+    const [selectedHotspot, setSelectedHotspot] = useState(null);
     const [hotspots, setHotspots] = useState([])
     const {darkMode} = useContext(Theme)
     const {latitude, longitude} = route.params || {}
@@ -216,30 +220,69 @@ export default function Map() {
     }, [latitude, longitude])
 
     return (
-        <MapView
-            ref={mapRef}
-            style={styles.map}
-            provider={PROVIDER_GOOGLE}
-            initialRegion={initialRegion}
-            showsUserLocation={true}
-            showsMyLocationButton={true}
-            mapType={darkMode ? 'standard' : 'hybrid'}
-            customMapStyle={darkMode ? darkModeMapStyle : []}
-        >
-            {hotspots.map(hotspot => (
-                <Marker
-                    onPress={() => Alert.alert(hotspot.name, hotspot.description)}
-                    key={hotspot.id}
-                    coordinate={{
-                        latitude: hotspot.latitude,
-                        longitude: hotspot.longitude
-                    }}
-                    title={hotspot.name}
-                    description={hotspot.description}
-                />
-            ))}
+        <View>
+            <MapView
+                ref={mapRef}
+                style={styles.map}
+                provider={PROVIDER_GOOGLE}
+                initialRegion={initialRegion}
+                showsUserLocation={true}
+                showsMyLocationButton={true}
+                mapType={darkMode ? 'standard' : 'hybrid'}
+                customMapStyle={darkMode ? darkModeMapStyle : []}
+            >
+                {hotspots.map(hotspot => (
+                    <Marker
+                        onPress={() => {
+                            setModalVisible(true)
+                            setSelectedHotspot(hotspot)
+                        }}
+                        key={hotspot.id}
+                        coordinate={{
+                            latitude: hotspot.latitude,
+                            longitude: hotspot.longitude
+                        }}
+                    />
+                ))}
+            </MapView>
 
-        </MapView>
+            {selectedHotspot && (
+                <Modal
+                    visible={modalVisible}
+                    transparent={true}
+                    animationType="slide"
+                    onRequestClose={() => {
+                        setModalVisible(!modalVisible);
+                    }}
+                >
+                    <View className="flex-1 justify-center items-center">
+                        <View className="flex bg-white border-2 rounded-xl w-96 h-96">
+                            <View className="flex justify-start items-start">
+                                <View className="flex flex-row justify-between items-center w-full">
+                                    <Text className="p-2 font-bold text-lg">{selectedHotspot.name}</Text>
+                                    <Pressable
+                                        className="p-2 rounded-full text-white"
+                                        onPress={() => {
+                                            setModalVisible(false)
+                                        }}
+                                    >
+                                        <AntDesign name="closecircleo" size={24} color="#3b82f6"/>
+                                    </Pressable>
+                                </View>
+                                <Text className="pl-2">{`${selectedHotspot.description}`}</Text>
+                            </View>
+                            <WebView
+                                source={{html: `<iframe width="100%" height="100%" src=${selectedHotspot.iframeSrc} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`}}
+                                javaScriptEnabled={true}
+                                domStorageEnabled={true}
+                            />
+                        </View>
+                    </View>
+
+                </Modal>
+            )}
+
+        </View>
 
 
     )
