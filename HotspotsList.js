@@ -11,9 +11,7 @@ export default function HotspotsList() {
 
         container: {
             flex: 1,
-            backgroundColor: darkMode ? 'black' : 'white',
-            alignItems: 'center',
-            justifyContent: 'center',
+            backgroundColor: darkMode ? 'black' : 'smokewhite',
         },
         mainText: {
             color: darkMode ? 'white' : 'black'

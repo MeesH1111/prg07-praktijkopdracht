@@ -161,7 +161,7 @@ export default function HotspotList() {
                 <FlatList
                     ListHeaderComponent={
                         <View className="flex flex-row justify-center items-center mt-10">
-                            <Entypo name="list" size={24} color="black"/>
+                            <Entypo name="list" size={24} color={`${darkMode ? 'white' : 'black'}`}/>
                             <Text
                                 className="text-3xl font-semibold p-6"
                                 style={styles.listTextTitle}
