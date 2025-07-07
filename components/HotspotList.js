@@ -40,7 +40,7 @@ export default function HotspotList() {
             const data = await response.json()
             setHotspot(data.hotspots)
         } catch (error) {
-            console.error('Fout bij het ophalen van hotspots:', error)
+            console.error('Fout bij het ophalen van hotspots')
             setError(error)
         } finally {
             setLoading(false)
@@ -54,7 +54,7 @@ export default function HotspotList() {
                 setfavorites(JSON.parse(storedfavorites))
             }
         } catch (error) {
-            console.error('Fout bij het ophalen van favorites:', error)
+            console.error('Fout bij het ophalen van favorites')
         }
     }
 
@@ -72,7 +72,7 @@ export default function HotspotList() {
 
             await AsyncStorage.setItem('favorites', JSON.stringify(updatedfavorites))
         } catch (error) {
-            console.error('Fout bij het opslaan van favorites:', error)
+            console.error('Fout bij het opslaan van favorites')
         }
     }
 
@@ -83,7 +83,7 @@ export default function HotspotList() {
                 setNotes(JSON.parse(storedNotes))
             }
         } catch (error) {
-            console.error('Fout bij het ophalen van notes:', error)
+            console.error('Fout bij het ophalen van notes')
         }
     }
 
@@ -93,7 +93,7 @@ export default function HotspotList() {
             setNotes(updatedNotes)
             await AsyncStorage.setItem('notes', JSON.stringify(updatedNotes))
         } catch (error) {
-            console.error('Fout bij het opslaan van notes:', error)
+            console.error('Fout bij het opslaan van notes')
         }
     }
 

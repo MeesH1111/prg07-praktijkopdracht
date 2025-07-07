@@ -18,7 +18,7 @@ export default function About() {
     })
 
     return (
-        <ScrollView className="mt-10">
+        <ScrollView>
             <View style={styles.block}
                   className="flex flex-row justify-between items-center p-4 m-4 border-2 border-gray-200 rounded-2xl bg-white shadow">
                 <View>

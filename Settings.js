@@ -4,6 +4,7 @@ import React, {useContext} from "react";
 import {Theme} from "./components/Theme";
 import Feather from "@expo/vector-icons/Feather";
 import {SafeAreaProvider} from "react-native-safe-area-context";
+import About from "./components/About";
 
 
 export default function Settings() {
@@ -76,6 +77,7 @@ export default function Settings() {
                             value={darkMode}
                         />
                     </View>
+                    <About/>
                     <StatusBar style="auto"/>
                 </ScrollView>
             </SafeAreaView>
