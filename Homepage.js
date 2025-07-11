@@ -30,7 +30,7 @@ export default function Homepage() {
             const data = await response.json()
             setHotspots(data.hotspots)
         } catch (error) {
-            console.error('Fout bij het ophalen van hotspots')
+            console.error('Fout bij het ophalen van hotspots????')
         } finally {
             setLoading(false)
         }
@@ -38,7 +38,7 @@ export default function Homepage() {
 
     useEffect(() => {
         fetchSpots()
-    })
+    }, [])
 
     const styles = StyleSheet.create({
         container: {
