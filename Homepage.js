@@ -88,7 +88,7 @@ export default function Homepage() {
                         <Pressable onPress={() => {
                             handlePress()
                         }}
-                                   className="flex flex-row justify-center items-center p-4 m-4 border-2 border-gray-200 rounded-2xl bg-blue-500 shadow">
+                                   className="flex flex-row justify-center items-center p-4 m-4 rounded-2xl bg-blue-500 shadow">
                             <Text className="font-bold text-2xl color-white">Check de spots!</Text>
                             <FontAwesome6 name="hand-point-left" size={24} color="white" className="ml-4"/>
                         </Pressable>
