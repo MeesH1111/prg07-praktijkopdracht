@@ -74,7 +74,7 @@ export default function Homepage() {
                     </View>
                     <View className="flex-1">
                         <View className="pl-4">
-                            <Text className="font-bold text-2xl">Hotspots</Text>
+                            <Text className="font-bold text-2xl">Skatespots</Text>
                         </View>
                         <FlatList
                             data={hotspots}
