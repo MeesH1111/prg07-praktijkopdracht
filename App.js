@@ -38,23 +38,27 @@ export default function App() {
                     name={'Home'}
                     component={Homepage}
                     options={{
-                        tabBarIcon: () => <Feather name="home" size={23} color={`${darkMode ? 'white' : 'black'}`}/>
+                        tabBarIcon: ({focused}) => <Feather name="home" size={23}
+                                                            color={focused ? ('#3b82f6') : (darkMode ? 'white' : 'black')}
+                        />
                     }}
                 />
 
                 <Tab.Screen
-                    name={'HotspotsMap'}
+                    name={'Map'}
                     component={HotspotsMap}
                     options={{
-                        tabBarIcon: () => <Feather name="map-pin" size={24} color={`${darkMode ? 'white' : 'black'}`}/>
+                        tabBarIcon: ({focused}) => <Feather name="map" size={22}
+                                                            color={focused ? ('#3b82f6') : (darkMode ? 'white' : 'black')}/>
                     }}
                 />
 
                 <Tab.Screen
-                    name={'HotspotsList'}
+                    name={'List'}
                     component={HotspotsList}
                     options={{
-                        tabBarIcon: () => <Feather name="list" size={24} color={`${darkMode ? 'white' : 'black'}`}/>
+                        tabBarIcon: ({focused}) => <Feather name="list" size={24}
+                                                            color={focused ? ('#3b82f6') : (darkMode ? 'white' : 'black')}/>
                     }}
                 />
 
@@ -62,7 +66,8 @@ export default function App() {
                     name={'Settings'}
                     component={Settings}
                     options={{
-                        tabBarIcon: () => <Feather name="settings" size={22} color={`${darkMode ? 'white' : 'black'}`}/>
+                        tabBarIcon: ({focused}) => <Feather name="settings" size={22}
+                                                            color={focused ? ('#3b82f6') : (darkMode ? 'white' : 'black')}/>
                     }}
                 />
             </Tab.Navigator>
