@@ -13,6 +13,7 @@ import HotspotItem from "./components/HotspotItem";
 export default function Homepage() {
     const navigation = useNavigation();
     const {darkMode} = useContext(Theme);
+    const {themeColors} = useContext(Theme);
 
     const [hotspots, setHotspots] = useState([])
     const [loading, setLoading] = useState(true)
@@ -88,7 +89,8 @@ export default function Homepage() {
                         <Pressable onPress={() => {
                             handlePress()
                         }}
-                                   className="flex flex-row justify-center items-center p-4 m-4 rounded-2xl bg-blue-500 shadow">
+                                   style={{backgroundColor: themeColors.primaryColor}}
+                                   className="flex flex-row justify-center items-center p-4 m-4 rounded-2xl shadow">
                             <Text className="font-bold text-2xl color-white">Check de spots!</Text>
                             <FontAwesome6 name="hand-point-left" size={24} color="white" className="ml-4"/>
                         </Pressable>

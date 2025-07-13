@@ -3,8 +3,12 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const Theme = createContext();
 
-export function AppProvider({ children }) {
+export function AppProvider({children}) {
     const [darkMode, setDarkMode] = useState(false)
+
+    const themeColors = {
+        primaryColor: darkMode ? '#D50000' : '#D50000',
+    }
 
     useEffect(() => {
         const loadDarkMode = async () => {
@@ -27,7 +31,7 @@ export function AppProvider({ children }) {
 
 
     return (
-        <Theme.Provider value={{darkMode, setDarkMode}}>
+        <Theme.Provider value={{darkMode, setDarkMode, themeColors}}>
             {children}
         </Theme.Provider>
     )

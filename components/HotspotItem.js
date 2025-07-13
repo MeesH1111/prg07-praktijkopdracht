@@ -7,6 +7,7 @@ import {Theme} from "./Theme";
 export default function HotspotItem({hotspot, onPress}) {
     const navigation = useNavigation();
     const {darkMode} = useContext(Theme)
+    const {themeColors} = useContext(Theme)
 
 
     const handlePress = (hotspot) => {
@@ -30,6 +31,8 @@ export default function HotspotItem({hotspot, onPress}) {
         },
 
         typeView: {
+            backgroundColor: themeColors.primaryColor,
+
             shadowColor: "#000",
             shadowOffset: {
                 width: 0,
@@ -49,7 +52,7 @@ export default function HotspotItem({hotspot, onPress}) {
                 <ImageBackground
                     className="flex flex-row-reverse bg-gray-300 rounded-t-xl w-full h-[12.375rem] max-h-96">
                     <View style={styles.typeView}
-                          className="flex justify-center items-center p-2 mr-4 mt-4 w-32 h-[3rem] rounded-full bg-blue-500 shadow">
+                          className="flex justify-center items-center p-2 mr-4 mt-4 w-32 h-[3rem] rounded-full shadow">
                         <Text adjustsFontSizeToFit={true} numberOfLines={1}
                               className="text-white">{hotspot.type}</Text>
                     </View>
