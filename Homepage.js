@@ -19,7 +19,7 @@ export default function Homepage() {
     const [loading, setLoading] = useState(true)
 
     const handlePress = (hotspot) => {
-        navigation.navigate('HotspotsMap', {
+        navigation.navigate('Map', {
             latitude: 51.91762853917579,
             longitude: 4.483075383438459,
         })

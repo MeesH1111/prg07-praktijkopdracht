@@ -32,6 +32,7 @@ export default function HotspotList() {
     const [noteInput, setNoteInput] = useState('')
 
     const {darkMode} = useContext(Theme)
+    const {themeColors} = useContext(Theme)
     const image = {uri: 'https://rotterdammakeithappen.nl/app/uploads/2019/09/201908_VerwoesteStad_558A3033_IrisvandenBroek-855x570.jpg'};
 
     const fetchSpots = async () => {
@@ -184,12 +185,13 @@ export default function HotspotList() {
                                 <View
                                     className={`flex  ${darkMode ? 'bg-gray-800' : 'bg-gray-100'} rounded-lg p-4`}>
                                     <Text style={styles.listTextTitle}
-                                          className="font-bold text-lg">{item.name}</Text>
-                                    <Text style={styles.listTextDescription} className="">{item.description}</Text>
-                                    <View
-                                        className="flex flex-row justify-center items-center rounded-full max-w-28 bg-sky-100 mt-4">
-                                        <Text style={styles.listTextType}
-                                              className="font-semibold p-2 color-blue-500 ">{item.type}</Text>
+                                          className="font-bold text-xl">{item.name}</Text>
+                                    <Text style={styles.listTextDescription}
+                                          className="text-lg">{item.description}</Text>
+                                    <View style={{backgroundColor: themeColors.primaryColor}}
+                                          className="flex flex-row justify-center items-center rounded-full max-w-28 mt-4">
+                                        <Text
+                                            className="p-2 text-lg color-white">{item.type}</Text>
                                     </View>
                                 </View>
                                 <View className='flex flex-row-reverse justify-between items-center'>
@@ -197,7 +199,7 @@ export default function HotspotList() {
                                     <Pressable onPress={() => toggleFavorite(item.id)}
                                                className={`p-2 mt-4 w-16 h-16 rounded-full flex justify-center items-center ${favorites[item.id] ? `bg-blue-500` : 'bg-[#f5f5f5]'}`}>
                                         <Text
-                                            className="color-gray-100">{favorites[item.id] ? '❤️' : '🤍'}</Text>
+                                            className="color-gray-100 text-lg">{favorites[item.id] ? '❤️' : '🤍'}</Text>
                                     </Pressable>
 
                                     {/*NOTITIE*/}
@@ -205,12 +207,12 @@ export default function HotspotList() {
                                                className={`p-6 mt-4 w-72 max-w-72 border-2 border-gray-500 rounded-lg ${darkMode ? 'bg-gray-700' : 'bg-white'}`}>
                                         <View>
                                             <Text
-                                                className={`${darkMode ? 'text-white' : 'text-black'} font-bold`}>
+                                                className={`${darkMode ? 'text-white' : 'text-black'} font-bold text-lg`}>
                                                 Notitie:
                                             </Text>
                                             <ScrollView>
                                                 <Text
-                                                    className={`${darkMode ? 'text-white' : 'text-black'}`}
+                                                    className={`${darkMode ? 'text-white' : 'text-black'} text-lg`}
                                                 >
                                                     {notes[item.id] || ''}
                                                 </Text>
@@ -238,10 +240,10 @@ export default function HotspotList() {
                                             value={noteInput}
                                             onChangeText={setNoteInput}
                                             maxLength={100}
-                                            className={`border-2 border-gray-500 rounded-lg p-4 mb-6 ${darkMode ? 'bg-white' : 'bg-white'} w-72`}
+                                            className={`border-2 border-gray-500 rounded-lg p-4 mb-6 ${darkMode ? 'bg-white' : 'bg-white'} w-72 text-lg`}
                                         />
                                         <Text
-                                            className={`${darkMode ? 'text-gray-300' : 'text-gray-500'} text-right`}>
+                                            className={`${darkMode ? 'text-gray-300' : 'text-gray-500'} text-right text-lg`}>
                                             {noteInput.length}/100 tekens
                                         </Text>
                                         <Button title="Opslaan" onPress={saveNote}/>

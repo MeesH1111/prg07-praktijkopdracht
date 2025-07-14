@@ -54,14 +54,14 @@ export default function HotspotItem({hotspot, onPress}) {
                     <View style={styles.typeView}
                           className="flex justify-center items-center p-2 mr-4 mt-4 w-32 h-[3rem] rounded-full shadow">
                         <Text adjustsFontSizeToFit={true} numberOfLines={1}
-                              className="text-white">{hotspot.type}</Text>
+                              className="text-white text-lg">{hotspot.type}</Text>
                     </View>
                 </ImageBackground>
                 <View className={`flex-1 justify-center pl-4 rounded-b-xl ${darkMode ? 'bg-black' : 'bg-white'}`}>
                     <Text
-                        className={`font-bold text-lg ${darkMode ? 'text-white' : 'text-black'}`}>{hotspot.name}</Text>
+                        className={`font-bold text-xl ${darkMode ? 'text-white' : 'text-black'}`}>{hotspot.name}</Text>
                     <Text adjustsFontSizeToFit={true} numberOfLines={3}
-                          className={`font-normal w-[13.25rem] ${darkMode ? 'text-white' : 'text-black'}`}>{hotspot.description}</Text>
+                          className={`font-normal text-lg w-[13.25rem] ${darkMode ? 'text-white' : 'text-black'}`}>{hotspot.description}</Text>
                 </View>
             </View>
         </Pressable>

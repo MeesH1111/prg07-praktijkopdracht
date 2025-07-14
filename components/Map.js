@@ -261,7 +261,7 @@ export default function Map() {
                             <View className="flex justify-start items-start">
                                 <View className="flex flex-row justify-between items-center w-full">
                                     <Text
-                                        className={`p-2 font-bold text-lg ${darkMode ? 'text-white' : 'text-black'}`}>{selectedHotspot.name}</Text>
+                                        className={`p-2 font-bold text-xl ${darkMode ? 'text-white' : 'text-black'}`}>{selectedHotspot.name}</Text>
                                     <Pressable
                                         className="p-2 rounded-full text-white"
                                         onPress={() => {
@@ -272,7 +272,7 @@ export default function Map() {
                                     </Pressable>
                                 </View>
                                 <Text
-                                    className={`pl-2 pb-2 ${darkMode ? 'text-white' : 'text-black'}`}>{`${selectedHotspot.description}`}</Text>
+                                    className={`pl-2 pb-2 ${darkMode ? 'text-white' : 'text-black'} text-lg`}>{`${selectedHotspot.description}`}</Text>
                             </View>
                             <WebView
                                 source={{html: `<iframe width="100%" height="100%" src=${selectedHotspot.iframeSrc} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`}}

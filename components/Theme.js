@@ -7,7 +7,7 @@ export function AppProvider({children}) {
     const [darkMode, setDarkMode] = useState(false)
 
     const themeColors = {
-        primaryColor: darkMode ? '#D50000' : '#D50000',
+        primaryColor: darkMode ? '#4a4e4d' : '#4a4e4d',
     }
 
     useEffect(() => {

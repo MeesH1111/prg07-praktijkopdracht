@@ -63,7 +63,7 @@ export default function Settings() {
                             <Feather name={`${darkMode ? 'sun' : 'moon'}`} size={24}
                                      color={`${darkMode ? 'white' : 'black'}`}/>
                             <Text style={styles.mainText}
-                                  className="flex text-lg font-semibold"
+                                  className="flex text-xl font-semibold"
 
                             >
                                 {darkMode ? 'Dark Mode!' : 'Dark Mode?'}
