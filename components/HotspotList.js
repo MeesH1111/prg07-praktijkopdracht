@@ -17,7 +17,7 @@ import {SafeAreaProvider} from "react-native-safe-area-context";
 import {Theme} from "./Theme";
 import {useNavigation} from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {Entypo} from "@expo/vector-icons";
+import {AntDesign, Entypo} from "@expo/vector-icons";
 
 
 export default function HotspotList() {
@@ -126,7 +126,7 @@ export default function HotspotList() {
     }
 
     const handlePress = (hotspot) => {
-        navigation.navigate('HotspotsMap', {
+        navigation.navigate('Map', {
             latitude: hotspot.latitude,
             longitude: hotspot.longitude,
         })
@@ -199,7 +199,10 @@ export default function HotspotList() {
                                     <Pressable onPress={() => toggleFavorite(item.id)}
                                                className={`p-2 mt-4 w-16 h-16 rounded-full flex justify-center items-center ${favorites[item.id] ? `bg-blue-500` : 'bg-[#f5f5f5]'}`}>
                                         <Text
-                                            className="color-gray-100 text-lg">{favorites[item.id] ? '❤️' : '🤍'}</Text>
+                                            className="text-lg">{favorites[item.id] ?
+                                            <AntDesign name="heart" size={24} color="black"/> :
+                                            <AntDesign name="hearto" size={24} color="black"/>
+                                        }</Text>
                                     </Pressable>
 
                                     {/*NOTITIE*/}
