@@ -6,6 +6,10 @@ export const Theme = createContext();
 export function AppProvider({children}) {
     const [darkMode, setDarkMode] = useState(false)
 
+    const fontFamilies = {
+        displayText: 'BebasNeue-Regular',
+    }
+
     const themeColors = {
         primaryColor: darkMode ? '#4a4e4d' : '#4a4e4d',
     }
@@ -31,7 +35,7 @@ export function AppProvider({children}) {
 
 
     return (
-        <Theme.Provider value={{darkMode, setDarkMode, themeColors}}>
+        <Theme.Provider value={{darkMode, setDarkMode, themeColors, fontFamilies}}>
             {children}
         </Theme.Provider>
     )

@@ -3,20 +3,35 @@ import {NavigationContainer} from '@react-navigation/native';
 import HotspotsList from "./HotspotsList";
 import HotspotsMap from "./HotspotsMap";
 import Settings from "./Settings";
-import React, {useContext} from "react";
+import React, {useContext, useEffect} from "react";
 import Feather from '@expo/vector-icons/Feather';
 import Homepage from "./Homepage";
 import {AppProvider, Theme} from "./components/Theme";
 import './global.css';
+import {useFonts} from "expo-font";
+import * as SplashScreen from 'expo-splash-screen';
 
 
 export default function App() {
     const Tab = createBottomTabNavigator()
+    const [loaded, error] = useFonts({
+        'BebasNeue-Regular': require('./assets/fonts/BebasNeue-Regular.ttf'),
+        'IBMPlexSans-VariableFont': require('./assets/fonts/IBMPlexSans-VariableFont.ttf'),
+    });
+
+    useEffect(() => {
+        if (loaded || error) {
+            SplashScreen.hideAsync();
+        }
+    }, [loaded, error]);
+
+    if (!loaded && !error) {
+        return null;
+    }
 
 
     function Tabs() {
         const {darkMode} = useContext(Theme);
-
         const screenOptions = {
             headerShown: false,
             tabBarInactiveTintColor: darkMode ? 'white' : 'black',
