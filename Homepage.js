@@ -12,8 +12,7 @@ import HotspotItem from "./components/HotspotItem";
 
 export default function Homepage() {
     const navigation = useNavigation();
-    const {darkMode} = useContext(Theme);
-    const {themeColors} = useContext(Theme);
+    const {darkMode, themeColors, fontFamilies} = useContext(Theme);
 
     const [hotspots, setHotspots] = useState([])
     const [loading, setLoading] = useState(true)
@@ -75,7 +74,8 @@ export default function Homepage() {
                     </View>
                     <View className="flex-1">
                         <View className="pl-4">
-                            <Text className="font-bold text-2xl">Skatespots</Text>
+                            <Text style={{fontFamily: fontFamilies.displayText}}
+                                  className="text-4xl">Skatespots</Text>
                         </View>
                         <FlatList
                             data={hotspots}
@@ -91,7 +91,8 @@ export default function Homepage() {
                         }}
                                    style={{backgroundColor: themeColors.primaryColor}}
                                    className="flex flex-row justify-center items-center p-4 m-4 rounded-2xl shadow">
-                            <Text className="font-bold text-2xl color-white">Check de spots!</Text>
+                            <Text style={{fontFamily: fontFamilies.displayText}}
+                                  className="text-4xl color-white">Check de spots!</Text>
                             <FontAwesome6 name="hand-point-left" size={24} color="white" className="ml-4"/>
                         </Pressable>
                         <DailySkatePart/>
