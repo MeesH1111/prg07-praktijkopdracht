@@ -8,6 +8,8 @@ export function AppProvider({children}) {
 
     const fontFamilies = {
         displayText: 'BebasNeue-Regular',
+        bodyText: 'PTSans-Regular',
+        bodyTextBold: 'PTSans-Bold',
     }
 
     const themeColors = {

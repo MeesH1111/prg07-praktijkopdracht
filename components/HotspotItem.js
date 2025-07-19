@@ -6,7 +6,7 @@ import {Theme} from "./Theme";
 
 export default function HotspotItem({hotspot, onPress}) {
     const navigation = useNavigation();
-    const {darkMode} = useContext(Theme)
+    const {darkMode, fontFamilies} = useContext(Theme)
     const {themeColors} = useContext(Theme)
 
 
@@ -59,9 +59,15 @@ export default function HotspotItem({hotspot, onPress}) {
                 </ImageBackground>
                 <View className={`flex-1 justify-center pl-4 rounded-b-xl ${darkMode ? 'bg-black' : 'bg-white'}`}>
                     <Text
-                        className={`font-bold text-xl ${darkMode ? 'text-white' : 'text-black'}`}>{hotspot.name}</Text>
-                    <Text adjustsFontSizeToFit={true} numberOfLines={3}
-                          className={`font-normal text-lg w-[13.25rem] ${darkMode ? 'text-white' : 'text-black'}`}>{hotspot.description}</Text>
+                        // style={{fontFamily: fontFamilies.bodyTextBold}}
+                        className={`font-bold text-xl pb-2 ${darkMode ? 'text-white' : 'text-black'}`}>{hotspot.name}</Text>
+                    <Text
+                        adjustsFontSizeToFit={true} numberOfLines={3}
+                        style={{
+                            lineHeight: 20,
+                            // fontFamily: fontFamilies.bodyText
+                        }}
+                        className={`font-normal text-lg w-[13.25rem] ${darkMode ? 'text-white' : 'text-black'}`}>{hotspot.description}</Text>
                 </View>
             </View>
         </Pressable>

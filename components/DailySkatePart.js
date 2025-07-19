@@ -11,7 +11,7 @@ export default function DailySkatePart() {
             <View className="flex justify-center items-center">
                 <Text style={{fontFamily: fontFamilies.displayText}}
                       className={`text-5xl ${darkMode ? 'text-white' : 'text-black'}`}>Daily Skate Part</Text>
-                <Text className={`font-bold text-lg ${darkMode ? 'text-white' : 'text-black'}`}>─────────</Text>
+                <Text className={`font-bold text-lg ${darkMode ? 'text-white' : 'text-black'}`}>────</Text>
             </View>
             <View className="flex-1 mt-10 m-4">
                 <WebView

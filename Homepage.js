@@ -76,6 +76,7 @@ export default function Homepage() {
                         <View className="pl-4">
                             <Text style={{fontFamily: fontFamilies.displayText}}
                                   className="text-4xl">Skatespots</Text>
+                            <Text className="text-2xl">────</Text>
                         </View>
                         <FlatList
                             data={hotspots}

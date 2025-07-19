@@ -17,6 +17,9 @@ export default function App() {
     const [loaded, error] = useFonts({
         'BebasNeue-Regular': require('./assets/fonts/BebasNeue-Regular.ttf'),
         'IBMPlexSans-VariableFont': require('./assets/fonts/IBMPlexSans-VariableFont.ttf'),
+        'PTSans-Regular': require('./assets/fonts/PT Sans/PTSans-Regular.ttf'),
+        'PTSans-Bold': require('./assets/fonts/PT Sans/PTSans-Bold.ttf'),
+
     });
 
     useEffect(() => {
@@ -31,7 +34,7 @@ export default function App() {
 
 
     function Tabs() {
-        const {darkMode} = useContext(Theme);
+        const {darkMode, themeColors} = useContext(Theme);
         const screenOptions = {
             headerShown: false,
             tabBarInactiveTintColor: darkMode ? 'white' : 'black',
