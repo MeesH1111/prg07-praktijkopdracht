@@ -53,7 +53,7 @@ export default function HotspotItem({hotspot, onPress}) {
                 <ImageBackground
                     className="flex flex-row bg-gray-300 rounded-t-xl w-full h-[12.375rem] max-h-96">
                     <View style={styles.typeView}
-                          className="flex justify-center items-center ml-4 mt-4 pl-4 pr-4 h-[3rem] rounded-full shadow">
+                          className="flex justify-center items-center ml-4 mt-4 pl-4 pr-4 h-[3rem] rounded-full">
                         <Text
                             className="text-white text-base">{hotspot.type}</Text>
                     </View>

@@ -4,7 +4,6 @@ import React, {useContext, useEffect, useState} from "react";
 import {Theme} from "./components/Theme";
 import {SafeAreaProvider} from "react-native-safe-area-context";
 import Feather from "@expo/vector-icons/Feather";
-import {FontAwesome6} from "@expo/vector-icons";
 import {useNavigation} from "@react-navigation/native";
 import DailySkatePart from "./components/DailySkatePart";
 import HotspotItem from "./components/HotspotItem";
@@ -60,6 +59,20 @@ export default function Homepage() {
             marginVertical: 10,
 
         },
+
+        mapButton: {
+            backgroundColor: themeColors.primaryColor,
+
+            shadowColor: "#000",
+            shadowOffset: {
+                width: 0,
+                height: 3,
+            },
+            shadowOpacity: 0.27,
+            shadowRadius: 4.65,
+
+            elevation: 6,
+        },
     });
 
     if (loading) {
@@ -97,11 +110,12 @@ export default function Homepage() {
                         <Pressable onPress={() => {
                             handlePress()
                         }}
-                                   style={{backgroundColor: themeColors.primaryColor}}
-                                   className="flex flex-row justify-center items-center p-4 m-4 rounded-2xl shadow">
+                                   style={styles.mapButton}
+                                   className="flex flex-row justify-center items-center p-4 m-4 rounded-xl shadow">
                             <Text style={{fontFamily: fontFamilies.displayText}}
-                                  className="text-4xl color-white">Check de spots!</Text>
-                            <FontAwesome6 name="hand-point-left" size={24} color="white" className="ml-4"/>
+                                  className="text-4xl color-white">Check the map! ️</Text>
+                            {/*<FontAwesome6 name="hand-point-left" size={24} color="white" className="ml-4"/>*/}
+                            <Text className="text-4xl ml-4">🗺️</Text>
                         </Pressable>
                         <View style={styles.divider}></View>
                         <DailySkatePart/>
