@@ -2,7 +2,7 @@ import {ImageBackground, Pressable, StyleSheet, Text, View} from "react-native";
 import React, {useContext} from "react";
 import {useNavigation} from "@react-navigation/native";
 import {Theme} from "./Theme";
-import {AntDesign} from "@expo/vector-icons";
+import {Entypo} from "@expo/vector-icons";
 
 
 export default function HotspotItem({hotspot, onPress}) {
@@ -71,8 +71,8 @@ export default function HotspotItem({hotspot, onPress}) {
                             }}
                             className={`font-normal text-lg w-[13.25rem] ${darkMode ? 'text-white' : 'text-gray-700'}`}>{hotspot.description}</Text>
                         <Pressable className="pr-4 shadow-xl" onPress={() => handlePress(hotspot)}>
-                            <AntDesign name="rightcircleo" size={32}
-                                       color={`${darkMode ? 'white' : themeColors.primaryColor}`}/>
+                            <Entypo name="chevron-right" size={28}
+                                    color={`${darkMode ? 'white' : themeColors.primaryColor}`}/>
                         </Pressable>
                     </View>
                 </View>

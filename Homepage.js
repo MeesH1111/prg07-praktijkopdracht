@@ -53,6 +53,13 @@ export default function Homepage() {
         listTextTitle: {
             color: darkMode ? 'white' : 'black'
         },
+
+        divider: {
+            borderBottomWidth: 1,
+            borderBottomColor: darkMode ? 'rgba(255,255,255,0.5)' : 'rgba(48,48,48,0.2)',
+            marginVertical: 10,
+
+        },
     });
 
     if (loading) {
@@ -75,8 +82,8 @@ export default function Homepage() {
                     <View className="flex-1">
                         <View className="pl-4">
                             <Text style={{fontFamily: fontFamilies.displayText}}
-                                  className="text-4xl">Skatespots</Text>
-                            <Text className="text-2xl">────</Text>
+                                  className={`text-4xl ${darkMode ? 'text-white' : 'text-black'}`}>Skatespots</Text>
+                            <Text className={`text-2xl ${darkMode ? 'text-white' : 'text-black'}`}>────</Text>
                         </View>
                         <FlatList
                             data={hotspots}
@@ -96,6 +103,7 @@ export default function Homepage() {
                                   className="text-4xl color-white">Check de spots!</Text>
                             <FontAwesome6 name="hand-point-left" size={24} color="white" className="ml-4"/>
                         </Pressable>
+                        <View style={styles.divider}></View>
                         <DailySkatePart/>
                         <StatusBar style="auto"/>
                     </View>
