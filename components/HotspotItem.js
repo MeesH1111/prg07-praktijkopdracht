@@ -51,7 +51,8 @@ export default function HotspotItem({hotspot, onPress}) {
             <View style={styles.cardView}
                   className={`flex w-[19rem] h-[19.438rem] m-4 rounded-xl bg-white ${darkMode ? 'border-2 border-white' : ''}`}>
                 <ImageBackground
-                    className="flex flex-row bg-gray-300 rounded-t-xl w-full h-[12.375rem] max-h-96">
+                    source={{uri: "https://rotterdammakeithappen.nl/app/uploads/2019/09/201908_VerwoesteStad_558A3033_IrisvandenBroek-855x570.jpg"}}
+                    className="flex flex-row bg-gray-300 rounded-t-xl w-full h-[12.375rem] max-h-96 overflow-hidden">
                     <View style={styles.typeView}
                           className="flex justify-center items-center ml-4 mt-4 pl-4 pr-4 h-[3rem] rounded-full">
                         <Text

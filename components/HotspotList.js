@@ -179,7 +179,7 @@ export default function HotspotList() {
                             <ImageBackground
                                 source={{uri: "https://rotterdammakeithappen.nl/app/uploads/2019/09/201908_VerwoesteStad_558A3033_IrisvandenBroek-855x570.jpg"}}
                                 style={styles.listItemView}
-                                className="p-6 m-6 border-2 border-gray-300 rounded-lg shadow-xl"
+                                className="p-6 m-6 border-2 border-gray-300 rounded-lg shadow-xl overflow-hidden"
 
                             >
                                 <View
