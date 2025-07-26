@@ -1,8 +1,8 @@
 import {StatusBar} from 'expo-status-bar';
 import {StyleSheet, View} from 'react-native';
 import React, {useContext} from "react";
-import {Theme} from "./components/Theme";
-import HotspotList from "./components/HotspotList";
+import {Theme} from "../components/Theme";
+import HotspotList from "../components/HotspotList";
 
 export default function HotspotsList() {
     const {darkMode} = useContext(Theme);

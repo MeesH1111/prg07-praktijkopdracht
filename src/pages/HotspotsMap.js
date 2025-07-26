@@ -1,5 +1,5 @@
 import {View} from "react-native";
-import Map from "./components/Map";
+import Map from "../components/Map";
 import {StatusBar} from "expo-status-bar";
 import React from "react";
 import {useRoute} from "@react-navigation/native";

@@ -1,12 +1,12 @@
 import {StatusBar} from 'expo-status-bar';
 import {ActivityIndicator, FlatList, Pressable, SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
 import React, {useContext, useEffect, useState} from "react";
-import {Theme} from "./components/Theme";
+import {Theme} from "../components/Theme";
 import {SafeAreaProvider} from "react-native-safe-area-context";
 import Feather from "@expo/vector-icons/Feather";
 import {useNavigation} from "@react-navigation/native";
-import DailySkatePart from "./components/DailySkatePart";
-import HotspotItem from "./components/HotspotItem";
+import DailySkatePart from "../components/DailySkatePart";
+import HotspotItem from "../components/HotspotItem";
 
 
 export default function Homepage() {

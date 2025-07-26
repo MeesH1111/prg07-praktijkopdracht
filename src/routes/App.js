@@ -1,13 +1,13 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
-import HotspotsList from "./HotspotsList";
-import HotspotsMap from "./HotspotsMap";
-import Settings from "./Settings";
+import HotspotsList from "../pages/HotspotsList";
+import HotspotsMap from "../pages/HotspotsMap";
+import Settings from "../pages/Settings";
 import React, {useContext, useEffect} from "react";
 import Feather from '@expo/vector-icons/Feather';
-import Homepage from "./Homepage";
-import {AppProvider, Theme} from "./components/Theme";
-import './global.css';
+import Homepage from "../pages/Homepage";
+import {AppProvider, Theme} from "../components/Theme";
+import '../../global.css';
 import {useFonts} from "expo-font";
 import * as SplashScreen from 'expo-splash-screen';
 
@@ -15,10 +15,9 @@ import * as SplashScreen from 'expo-splash-screen';
 export default function App() {
     const Tab = createBottomTabNavigator()
     const [loaded, error] = useFonts({
-        'BebasNeue-Regular': require('./assets/fonts/BebasNeue-Regular.ttf'),
-        'IBMPlexSans-VariableFont': require('./assets/fonts/IBMPlexSans-VariableFont.ttf'),
-        'PTSans-Regular': require('./assets/fonts/PT Sans/PTSans-Regular.ttf'),
-        'PTSans-Bold': require('./assets/fonts/PT Sans/PTSans-Bold.ttf'),
+        'BebasNeue-Regular': require('../../assets/fonts/BebasNeue-Regular.ttf'),
+        'PTSans-Regular': require('../../assets/fonts/PT Sans/PTSans-Regular.ttf'),
+        'PTSans-Bold': require('../../assets/fonts/PT Sans/PTSans-Bold.ttf'),
 
     });
 

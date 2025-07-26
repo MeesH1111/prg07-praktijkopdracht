@@ -1,10 +1,10 @@
 import {StatusBar} from 'expo-status-bar';
 import {SafeAreaView, ScrollView, StyleSheet, Switch, Text, View} from 'react-native';
 import React, {useContext} from "react";
-import {Theme} from "./components/Theme";
+import {Theme} from "../components/Theme";
 import Feather from "@expo/vector-icons/Feather";
 import {SafeAreaProvider} from "react-native-safe-area-context";
-import About from "./components/About";
+import About from "../components/About";
 
 
 export default function Settings() {
