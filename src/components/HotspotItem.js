@@ -53,11 +53,11 @@ export default function HotspotItem({hotspot, onPress}) {
                 <ImageBackground
                     source={{uri: "https://rotterdammakeithappen.nl/app/uploads/2019/09/201908_VerwoesteStad_558A3033_IrisvandenBroek-855x570.jpg"}}
                     className="flex flex-row bg-gray-300 rounded-t-xl w-full h-[12.375rem] max-h-96 overflow-hidden">
-                    <View style={styles.typeView}
-                          className="flex justify-center items-center ml-4 mt-4 pl-4 pr-4 h-[3rem] rounded-full">
-                        <Text
-                            className="text-white text-base">{hotspot.type}</Text>
-                    </View>
+                    <Pressable onPress={() => navigation.navigate('SkateSpotTypes')}
+                               style={styles.typeView}
+                               className="flex justify-center items-center ml-4 mt-4 pl-4 pr-4 h-[3rem] rounded-full">
+                        <Text className="text-white text-base">{hotspot.type}</Text>
+                    </Pressable>
                 </ImageBackground>
                 <View className={`flex-1 justify-center pl-4 rounded-b-xl ${darkMode ? 'bg-black' : 'bg-white'}`}>
                     <Text

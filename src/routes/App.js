@@ -10,10 +10,13 @@ import {AppProvider, Theme} from "../components/Theme";
 import '../../global.css';
 import {useFonts} from "expo-font";
 import * as SplashScreen from 'expo-splash-screen';
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
+import SkateSpotTypes from "../pages/SkateSpotTypes";
 
 
 export default function App() {
     const Tab = createBottomTabNavigator()
+    const Stack = createNativeStackNavigator();
     const [loaded, error] = useFonts({
         'BebasNeue-Regular': require('../../assets/fonts/BebasNeue-Regular.ttf'),
         'PTSans-Regular': require('../../assets/fonts/PT Sans/PTSans-Regular.ttf'),
@@ -95,7 +98,20 @@ export default function App() {
     return (
         <AppProvider>
             <NavigationContainer>
-                <Tabs/>
+                <Stack.Navigator>
+                    <Stack.Screen
+                        name="MainTabs"
+                        component={Tabs}
+                        options={{headerShown: false}}
+                    />
+
+                    <Stack.Screen
+                        name="SkateSpotTypes"
+                        component={SkateSpotTypes}
+                        options={{headerShown: false}}
+                    />
+
+                </Stack.Navigator>
             </NavigationContainer>
         </AppProvider>
     );
